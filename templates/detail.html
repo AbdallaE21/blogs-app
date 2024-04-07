@@ -3,5 +3,7 @@
 <div class="post-entry">
     <h2>{{post.title}}</h2>
     <p>{{post.body}}</p>
+    <p><a href="{% url 'edit' post.pk %}">+ Edit Blog Post</a></p>
+    <p><a href="{% url 'delete' post.pk %}">- Delete Blog Post</a></p>
 </div>
 {% endblock content %}

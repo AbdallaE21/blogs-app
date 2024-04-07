@@ -23,6 +23,8 @@ class BlogTest(TestCase):
         post = Post(title = 'a sample title')
         self.assertEqual(str(post),post.title)
 
+    def test_get_absolute_url(self):
+        self.assertEqual(self.post.get_absolute_url, 'post/1/')
 
     def test_post_content(self):
         self.assertEqual(f'{self.post.title}','a good title')
@@ -42,3 +44,9 @@ class BlogTest(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, 'a good title')
         self.assertTemplateUsed(response, 'detail.html')
+
+    def test_post_create_view(self):
+        response = self.client.post(reverse('post_new'),{
+            'title':'New title',
+                
+        })
